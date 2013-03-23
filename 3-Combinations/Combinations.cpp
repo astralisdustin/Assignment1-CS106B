@@ -34,7 +34,11 @@ int chooseVertex(){
     
 }
 
-/**/
+/*randomly chooses a vertex as a starting point, draws a small circle,
+ *then continously randomly chooses vertices, moving the starting
+ *point halfway to the next vertex each time and drawing a small
+ *circle until the mouse is clicked.
+ */
 void drawCircles(GWindow gw, int points[]){
     
     int vertex = chooseVertex();
@@ -45,10 +49,14 @@ void drawCircles(GWindow gw, int points[]){
     
     while (true) {
         
-        gw.fillOval(x, y, 2, 2);
-        vertex = chooseVertex();
-        vx = points[(vertex - 1) * 2] - 3;
-        vy = points[(vertex - 1) * 2 + 1] - 3;
+        gw.fillOval(x, y, 2, 2); //draws a 2x2 circle at x,y
+        
+        vertex = chooseVertex(); //chooses a vertex 1 to 3
+        
+        vx = points[(vertex - 1) * 2] - 1; //picks the correct array indexes based on
+        vy = points[(vertex - 1) * 2 + 1] - 1; //the chosen vertex
+        
+        /*calculates half the distance to the new vertex*/
         x = (vx - x) / 2 + x;
         y = (vy - y) / 2 + y;
         
@@ -79,9 +87,7 @@ void waitForUserInput(GWindow gw){
     double startY;
     int mousePressed = 0;
     
-    //GPoint pt1;
-    //GPoint pt2;
-    int points [6];
+    int points [6]; //array to store the x and y of the three points
 
     while (true){
         
