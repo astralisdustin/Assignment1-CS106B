@@ -19,7 +19,7 @@ using namespace std;
 
 string getFileName();
 Vector<string> readFile(string str);
-void drawHistogram(Vector<string> scores);
+void drawHistogram(Vector<string> &scores);
 
 /* Main program */
 
@@ -66,6 +66,7 @@ Vector<string> readFile(string str){
         
         getline(filestr, line);
         scores.add(line);
+        scores.add("71");
         cout << line << endl;
         
         
@@ -76,7 +77,7 @@ Vector<string> readFile(string str){
 }
 
 /**/
-void drawHistogram(Vector<string> scores){
+void drawHistogram(Vector<string> &scores){
     
     
     //testing.... doesn't work
